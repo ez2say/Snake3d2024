@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -555,6 +555,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainMenuAudioSource
       objectReference: {fileID: 0}
+    - target: {fileID: 8267605330728274584, guid: dc00ab513d951ae479459c8279a12176, type: 3}
+      propertyPath: m_Volume
+      value: 0.342
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -569,12 +573,48 @@ PrefabInstance:
     m_TransformParent: {fileID: 269575171}
     m_Modifications:
     - target: {fileID: 2428546897387279506, guid: f8637d5009566204798412b34aca5352, type: 3}
+      propertyPath: _soundToggle
+      value: 
+      objectReference: {fileID: 4508507023221974287}
+    - target: {fileID: 2428546897387279506, guid: f8637d5009566204798412b34aca5352, type: 3}
       propertyPath: backgroundMusic
       value: 
       objectReference: {fileID: 1816752736}
+    - target: {fileID: 2428546897387279506, guid: f8637d5009566204798412b34aca5352, type: 3}
+      propertyPath: _audioSources.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2428546897387279506, guid: f8637d5009566204798412b34aca5352, type: 3}
+      propertyPath: _audioSources.Array.data[0]
+      value: 
+      objectReference: {fileID: 1816752736}
+    - target: {fileID: 4124091091968985546, guid: f8637d5009566204798412b34aca5352, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4124091091968985546, guid: f8637d5009566204798412b34aca5352, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 13731e4ca77cd094097bac5a499b47df, type: 3}
     - target: {fileID: 4324004447842759664, guid: f8637d5009566204798412b34aca5352, type: 3}
       propertyPath: m_Name
       value: MainMenuCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5317886240396514141, guid: f8637d5009566204798412b34aca5352, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752000697064940036, guid: f8637d5009566204798412b34aca5352, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 041f5d0cfee429d468c3ecba9badb9a0, type: 3}
+    - target: {fileID: 7132106609915808260, guid: f8637d5009566204798412b34aca5352, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132106609915808260, guid: f8637d5009566204798412b34aca5352, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8448453572474188799, guid: f8637d5009566204798412b34aca5352, type: 3}
       propertyPath: m_Pivot.x
@@ -656,11 +696,58 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8804499233952632992, guid: f8637d5009566204798412b34aca5352, type: 3}
+      propertyPath: m_Transition
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8804499233952632992, guid: f8637d5009566204798412b34aca5352, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8804499233952632992, guid: f8637d5009566204798412b34aca5352, type: 3}
+      propertyPath: m_Colors.m_ColorMultiplier
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8804499233952632992, guid: f8637d5009566204798412b34aca5352, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8804499233952632992, guid: f8637d5009566204798412b34aca5352, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8804499233952632992, guid: f8637d5009566204798412b34aca5352, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8804499233952632992, guid: f8637d5009566204798412b34aca5352, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8804499233952632992, guid: f8637d5009566204798412b34aca5352, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8804499233952632992, guid: f8637d5009566204798412b34aca5352, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8637d5009566204798412b34aca5352, type: 3}
+--- !u!114 &4508507023221974287 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5687402823985746624, guid: f8637d5009566204798412b34aca5352, type: 3}
+  m_PrefabInstance: {fileID: 4508507023221974286}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

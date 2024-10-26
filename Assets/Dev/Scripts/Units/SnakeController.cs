@@ -10,6 +10,10 @@ public class SnakeController : MonoBehaviour
 
     [SerializeField] private AudioSource _chompSound;
 
+    [SerializeField] private AudioSource _obstacleDeathSound;
+
+    [SerializeField] private AudioSource _toTheDepthSound;
+
     [SerializeField] private float _bonesDistance;
 
     [SerializeField] private GameObject _bonePrefab;
@@ -143,6 +147,14 @@ public class SnakeController : MonoBehaviour
         }
         else if (other.CompareTag("Obstacle") || other.CompareTag("Water"))
         {
+            _obstacleDeathSound.Play();
+
+            Die();
+        }
+        else if (other.CompareTag("Water"))
+        {
+            _toTheDepthSound.Play();
+
             Die();
         }
     }
