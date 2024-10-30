@@ -63,6 +63,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 64bedd2657214a94ab6fe78331423075, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1641031346408787799}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 64bedd2657214a94ab6fe78331423075, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6948967950604932631}
   m_SourcePrefab: {fileID: 100100000, guid: 64bedd2657214a94ab6fe78331423075, type: 3}
 --- !u!1 &5905814178400069565 stripped
 GameObject:
@@ -91,3 +94,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5216581434543980006, guid: 64bedd2657214a94ab6fe78331423075, type: 3}
+--- !u!111 &6948967950604932631
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5905814178400069565}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: a7ca4a3c32d727c4ebfd42a3809769e5, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: a7ca4a3c32d727c4ebfd42a3809769e5, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0

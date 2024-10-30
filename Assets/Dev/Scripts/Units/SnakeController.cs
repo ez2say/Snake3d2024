@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.UI;
+using TMPro;
 
 public class SnakeController : MonoBehaviour
 {
@@ -26,7 +26,7 @@ public class SnakeController : MonoBehaviour
 
     [SerializeField] private GameObject _recordPopupPanel;
 
-    [SerializeField] private Text _recordPopupText;
+    [SerializeField] private TextMeshProUGUI _recordPopupText;
 
     private Vector3 _direction = Vector3.forward;
 
@@ -36,14 +36,21 @@ public class SnakeController : MonoBehaviour
 
     private InputManager _inputManager;
 
-
     private void Start()
     {
         Instance = this;
 
         _inputManager = new GameObject("InputManager").AddComponent<InputManager>();
 
-        _recordPopupPanel.SetActive(false);
+        // Проверка на null перед использованием
+        if (_recordPopupPanel != null)
+        {
+            _recordPopupPanel.SetActive(false);
+        }
+        else
+        {
+            Debug.LogError("RecordPopupPanel не найден в сцене!");
+        }
 
         SavePreviousState();
     }
@@ -57,7 +64,6 @@ public class SnakeController : MonoBehaviour
         MoveTail();
 
         CheckFrontCollision();
-
     }
 
     private void HandleInput()
@@ -204,16 +210,37 @@ public class SnakeController : MonoBehaviour
 
     private void ShowRecordPopup(string message)
     {
-        _recordPopupText.text = message;
+        if (_recordPopupText != null)
+        {
+            _recordPopupText.text = message;
+        }
+        else
+        {
+            Debug.LogError("RecordPopupText не найден в сцене!");
+        }
 
-        _recordPopupPanel.SetActive(true);
+        if (_recordPopupPanel != null)
+        {
+            _recordPopupPanel.SetActive(true);
+        }
+        else
+        {
+            Debug.LogError("RecordPopupPanel не найден в сцене!");
+        }
 
         Invoke(nameof(HideRecordPopup), 3f);
     }
 
     private void HideRecordPopup()
     {
-        _recordPopupPanel.SetActive(false);
+        if (_recordPopupPanel != null)
+        {
+            _recordPopupPanel.SetActive(false);
+        }
+        else
+        {
+            Debug.LogError("RecordPopupPanel не найден в сцене!");
+        }
     }
 
     public void ResetSnake()
@@ -228,9 +255,9 @@ public class SnakeController : MonoBehaviour
         {
             Destroy(bone.gameObject);
         }
+
         _tails.Clear();
 
         SavePreviousState();
     }
-
 }

@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using System.Collections.Generic;
+using System.Linq;
 
 public class DeathScreenManager : MonoBehaviour
 {
@@ -25,10 +26,11 @@ public class DeathScreenManager : MonoBehaviour
 
     private const string LeaderboardKey = "Leaderboard";
 
+    private const int MaxLeaderboardEntries = 15;
+
     [Header("Snake Controller")]
 
     [SerializeField] private SnakeController _snakeController;
-
 
     private void Start()
     {
@@ -48,7 +50,7 @@ public class DeathScreenManager : MonoBehaviour
         PauseGame();
 
         ShowLeaderboard();
-        
+
         ShowNicknameInput();
     }
 
@@ -79,19 +81,44 @@ public class DeathScreenManager : MonoBehaviour
 
     private void ShowLeaderboard()
     {
-        string leaderboardData = LoadLeaderboardData();
+        List<LeaderboardEntry> leaderboardEntries = LoadLeaderboardData();
 
-        UpdateLeaderboardText(leaderboardData);
+        UpdateLeaderboardText(leaderboardEntries);
     }
 
-    private string LoadLeaderboardData()
+    private List<LeaderboardEntry> LoadLeaderboardData()
     {
-        return PlayerPrefs.GetString(LeaderboardKey, "");
+        string leaderboardData = PlayerPrefs.GetString(LeaderboardKey, "");
+
+        List<LeaderboardEntry> entries = new List<LeaderboardEntry>();
+
+        if (!string.IsNullOrEmpty(leaderboardData))
+        {
+            string[] lines = leaderboardData.Split('\n');
+            foreach (string line in lines)
+            {
+                if (!string.IsNullOrEmpty(line))
+                {
+                    string[] parts = line.Split(':');
+                    if (parts.Length == 2 && int.TryParse(parts[1], out int score))
+                    {
+                        entries.Add(new LeaderboardEntry(parts[0], score));
+                    }
+                }
+            }
+        }
+
+        return entries;
     }
 
-    private void UpdateLeaderboardText(string leaderboardData)
+    private void UpdateLeaderboardText(List<LeaderboardEntry> leaderboardEntries)
     {
-        _leaderboardText.text = "Leaderboard:\n" + leaderboardData;
+        string leaderboardText = "Leaderboard:\n";
+        foreach (var entry in leaderboardEntries)
+        {
+            leaderboardText += $"{entry.Nickname}: {entry.Score}\n";
+        }
+        _leaderboardText.text = leaderboardText;
     }
 
     private void ShowNicknameInput()
@@ -104,14 +131,20 @@ public class DeathScreenManager : MonoBehaviour
         string nickname = GetNicknameFromInputField();
         if (IsValidNickname(nickname))
         {
-            SaveScore(nickname, _foodEatenCount);
+            List<LeaderboardEntry> leaderboardEntries = LoadLeaderboardData();
+
+            leaderboardEntries.Add(new LeaderboardEntry(nickname, _foodEatenCount));
+
+            leaderboardEntries = leaderboardEntries.OrderByDescending(e => e.Score).Take(MaxLeaderboardEntries).ToList();
+            
+            SaveLeaderboardData(leaderboardEntries);
 
             HideNicknameInputPanel();
 
             ShowLeaderboard();
         }
     }
-    
+
     private string GetNicknameFromInputField()
     {
         return _nicknameInputField.text;
@@ -127,29 +160,12 @@ public class DeathScreenManager : MonoBehaviour
         _nicknameInputPanel.SetActive(false);
     }
 
-    private void SaveScore(string nickname, int score)
+    private void SaveLeaderboardData(List<LeaderboardEntry> leaderboardEntries)
     {
-        string leaderboardData = LoadLeaderboardData();
+        string leaderboardData = string.Join("\n", leaderboardEntries.Select(e => $"{e.Nickname}:{e.Score}"));
 
-        string updatedLeaderboardData = AppendScoreToLeaderboard(leaderboardData, nickname, score);
-
-        SaveLeaderboardData(updatedLeaderboardData);
-
-        CommitPlayerPrefs();
-    }
-
-    private string AppendScoreToLeaderboard(string leaderboardData, string nickname, int score)
-    {
-        return leaderboardData + nickname + ": " + score + "\n";
-    }
-
-    private void SaveLeaderboardData(string leaderboardData)
-    {
         PlayerPrefs.SetString(LeaderboardKey, leaderboardData);
-    }
 
-    private void CommitPlayerPrefs()
-    {
         PlayerPrefs.Save();
     }
 
@@ -163,5 +179,28 @@ public class DeathScreenManager : MonoBehaviour
         UnPauseGame();
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void ResetLeaderboard()
+    {
+        PlayerPrefs.DeleteKey(LeaderboardKey);
+
+        PlayerPrefs.Save();
+
+        ShowLeaderboard();
+    }
+
+    private class LeaderboardEntry
+    {
+        public string Nickname { get; }
+
+        public int Score { get; }
+
+        public LeaderboardEntry(string nickname, int score)
+        {
+            Nickname = nickname;
+            
+            Score = score;
+        }
     }
 }

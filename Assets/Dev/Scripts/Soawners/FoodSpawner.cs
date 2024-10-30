@@ -1,15 +1,13 @@
 using UnityEngine;
 using System.Collections.Generic;
-
 using System.Collections;
 
 public class FoodSpawner : MonoBehaviour
 {
-
     [Header("Food Settings")]
 
     [SerializeField] private List<GameObject> _foodPrefabs;
-    
+
     [SerializeField] private int _foodCount;
 
     [SerializeField] private float _spawnInterval;
@@ -28,7 +26,6 @@ public class FoodSpawner : MonoBehaviour
 
     private int _currentFoodCount;
 
-
     public void Construct()
     {
         _currentFoodCount = 0;
@@ -44,6 +41,7 @@ public class FoodSpawner : MonoBehaviour
         while (_currentFoodCount < _foodCount)
         {
             Vector3 spawnPosition = GetRandomPositionInArea();
+
             if (IsPositionValid(spawnPosition))
             {
                 InstantiateFood(spawnPosition);
@@ -81,10 +79,12 @@ public class FoodSpawner : MonoBehaviour
     private float GetGroundHeight(Vector3 position)
     {
         RaycastHit hit;
+
         if (Physics.Raycast(position, Vector3.down, out hit) && hit.collider.CompareTag("Ground"))
         {
             return hit.point.y;
         }
+
         return _groundHeight;
     }
 
@@ -102,19 +102,22 @@ public class FoodSpawner : MonoBehaviour
                 return false;
             }
         }
+
         return true;
     }
 
     private bool CheckCollisionWithObstacles(Vector3 position)
     {
         Collider[] colliders = Physics.OverlapSphere(position, 0.5f);
+
         foreach (Collider collider in colliders)
         {
-            if (collider.CompareTag("Obstacle"))
+            if (collider.CompareTag("Obstacle") || collider.CompareTag("Bridge"))
             {
                 return false;
             }
         }
+
         return true;
     }
 
@@ -149,6 +152,7 @@ public class FoodSpawner : MonoBehaviour
     private void SubscribeToFoodEatenEvent(GameObject food)
     {
         Food foodComponent = food.GetComponent<Food>();
+
         if (foodComponent != null)
         {
             foodComponent.OnFoodEaten += OnFoodEaten;
