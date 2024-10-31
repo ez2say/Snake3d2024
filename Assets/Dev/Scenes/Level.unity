@@ -13301,50 +13301,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 198621573}
     m_Modifications:
-    - target: {fileID: 427143478879295732, guid: 66b5acbf0cff43948bff3b7faf30ae05, type: 3}
-      propertyPath: _foodCounter
-      value: 
-      objectReference: {fileID: 315877663}
-    - target: {fileID: 1344411063940468461, guid: 66b5acbf0cff43948bff3b7faf30ae05, type: 3}
-      propertyPath: m_text
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1344411063940468461, guid: 66b5acbf0cff43948bff3b7faf30ae05, type: 3}
-      propertyPath: m_margin.w
-      value: -54.664062
-      objectReference: {fileID: 0}
-    - target: {fileID: 1344411063940468461, guid: 66b5acbf0cff43948bff3b7faf30ae05, type: 3}
-      propertyPath: m_margin.z
-      value: -101.02344
-      objectReference: {fileID: 0}
-    - target: {fileID: 1344411063940468461, guid: 66b5acbf0cff43948bff3b7faf30ae05, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 8e5b0f133b71b6044acfa95952950c57, type: 2}
-    - target: {fileID: 1344411063940468461, guid: 66b5acbf0cff43948bff3b7faf30ae05, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -6289728412436273038, guid: 8e5b0f133b71b6044acfa95952950c57, type: 2}
-    - target: {fileID: 1344411063940468461, guid: 66b5acbf0cff43948bff3b7faf30ae05, type: 3}
-      propertyPath: m_VerticalAlignment
-      value: 512
-      objectReference: {fileID: 0}
-    - target: {fileID: 1344411063940468461, guid: 66b5acbf0cff43948bff3b7faf30ae05, type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1344411063940468461, guid: 66b5acbf0cff43948bff3b7faf30ae05, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2552272703965309985, guid: 66b5acbf0cff43948bff3b7faf30ae05, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2552272703965309985, guid: 66b5acbf0cff43948bff3b7faf30ae05, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 248
-      objectReference: {fileID: 0}
     - target: {fileID: 4098199621815265572, guid: 66b5acbf0cff43948bff3b7faf30ae05, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -13428,6 +13384,10 @@ PrefabInstance:
     - target: {fileID: 6732868896453568005, guid: 66b5acbf0cff43948bff3b7faf30ae05, type: 3}
       propertyPath: m_Name
       value: FoodCanvasCounter
+      objectReference: {fileID: 0}
+    - target: {fileID: 6732868896453568005, guid: 66b5acbf0cff43948bff3b7faf30ae05, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
