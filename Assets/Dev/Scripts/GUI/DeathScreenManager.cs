@@ -171,6 +171,8 @@ public class DeathScreenManager : MonoBehaviour
 
     public void ReturnToMenu()
     {
+        UnPauseGame();
+
         SceneManager.LoadScene("MainMenu");
     }
 
