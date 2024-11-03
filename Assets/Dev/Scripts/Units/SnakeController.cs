@@ -42,7 +42,7 @@ public class SnakeController : MonoBehaviour
 
         _inputManager = new GameObject("InputManager").AddComponent<InputManager>();
 
-        // Проверка на null перед использованием
+
         if (_recordPopupPanel != null)
         {
             _recordPopupPanel.SetActive(false);

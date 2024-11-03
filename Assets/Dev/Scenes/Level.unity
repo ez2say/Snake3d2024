@@ -31732,7 +31732,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1380659067342974167, guid: 356a6c04489835148add32cf849add6b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19.69496
+      value: -19.694963
       objectReference: {fileID: 0}
     - target: {fileID: 1380659067342974167, guid: 356a6c04489835148add32cf849add6b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -31877,7 +31877,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7627880868419135160, guid: efeaddaa9a64e8148a91ac1547ca9e79, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19.69496
+      value: -19.694963
       objectReference: {fileID: 0}
     - target: {fileID: 7627880868419135160, guid: efeaddaa9a64e8148a91ac1547ca9e79, type: 3}
       propertyPath: m_LocalPosition.y
@@ -32467,8 +32467,16 @@ PrefabInstance:
       value: 12.7
       objectReference: {fileID: 0}
     - target: {fileID: 5990167548721439733, guid: 269ac20f5735cde4fbf549ee31576817, type: 3}
+      propertyPath: _spawnInterval
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5990167548721439733, guid: 269ac20f5735cde4fbf549ee31576817, type: 3}
       propertyPath: _spawnAreas.Array.size
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5990167548721439733, guid: 269ac20f5735cde4fbf549ee31576817, type: 3}
+      propertyPath: _minDistanceBetweenFood
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5990167548721439733, guid: 269ac20f5735cde4fbf549ee31576817, type: 3}
       propertyPath: _spawnAreas.Array.data[0]
@@ -32617,7 +32625,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8459707518361679738, guid: 2c51809b1588c4446a8b056cf27521d0, type: 3}
       propertyPath: _minDistanceFromSnake
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8459707518361679738, guid: 2c51809b1588c4446a8b056cf27521d0, type: 3}
       propertyPath: _spawnAreas.Array.size
@@ -32665,7 +32673,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8459707518361679738, guid: 2c51809b1588c4446a8b056cf27521d0, type: 3}
       propertyPath: _minDistanceBetweenObstacles
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8459707518361679738, guid: 2c51809b1588c4446a8b056cf27521d0, type: 3}
       propertyPath: _obstaclePrefabs.Array.data[0]

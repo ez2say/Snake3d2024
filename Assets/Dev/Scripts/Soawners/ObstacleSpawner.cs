@@ -106,7 +106,7 @@ public class ObstacleSpawner : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(position, 0.5f);
         foreach (Collider collider in colliders)
         {
-            if (collider.CompareTag("Bridge"))
+            if (collider.CompareTag("Bridge") || collider.CompareTag("Food"))
             {
                 return false;
             }

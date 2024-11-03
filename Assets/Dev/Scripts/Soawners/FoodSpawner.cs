@@ -108,7 +108,7 @@ public class FoodSpawner : MonoBehaviour
 
     private bool CheckCollisionWithObstacles(Vector3 position)
     {
-        Collider[] colliders = Physics.OverlapSphere(position, 0.5f);
+        Collider[] colliders = Physics.OverlapSphere(position, 2f);
 
         foreach (Collider collider in colliders)
         {
