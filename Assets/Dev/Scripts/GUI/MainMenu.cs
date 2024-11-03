@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] private GameObject settingsPanel;
+    private bool isActive = false;
 
     void Start()
     {
@@ -15,8 +16,14 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("Level"); 
     }
 
+    public void ToggleActive()
+    {
+        isActive = !isActive;
+        settingsPanel.SetActive(isActive);
+    }
+
     public void OpenSettings()
     {
-        settingsPanel.SetActive(!settingsPanel.activeSelf);
+        ToggleActive();
     }
 }
