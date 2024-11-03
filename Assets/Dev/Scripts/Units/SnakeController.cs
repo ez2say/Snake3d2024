@@ -97,7 +97,7 @@ public class SnakeController : MonoBehaviour
 
     private void UpdateRotation()
     {
-        transform.rotation = Quaternion.LookRotation(-_direction);
+        transform.rotation = Quaternion.LookRotation(_direction);
     }
 
     private void MoveTail()

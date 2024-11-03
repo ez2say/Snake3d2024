@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: m_ProvidesContacts
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 670897085594183528, guid: 96130f0b16203d243b31e84456574634, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1661213606141089588, guid: 96130f0b16203d243b31e84456574634, type: 3}
       propertyPath: m_Name
       value: Segment Variant

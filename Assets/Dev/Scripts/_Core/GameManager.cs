@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private InputManager _inputManager;
 
+    [SerializeField] private BeeSpawner _beeSpawner;
+
 
     private void Awake()
     {
@@ -21,6 +23,7 @@ public class GameManager : MonoBehaviour
         _foodSpawner.Construct();
 
         _obstacleSpawner.Construct();
+
     }
 
     private void StartGameplay()
@@ -28,5 +31,6 @@ public class GameManager : MonoBehaviour
         _foodSpawner.StartSpawn();
 
         _obstacleSpawner.StartSpawn();
+
     }
 }
