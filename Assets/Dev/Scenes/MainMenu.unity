@@ -156,6 +156,7 @@ Transform:
   - {fileID: 1521048917}
   - {fileID: 1579597677}
   - {fileID: 1816752737}
+  - {fileID: 1408314330}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &35620396
@@ -404,6 +405,52 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc93e8de568b7d14f91f94ccf6b58e28, type: 3}
+--- !u!1 &1408314329
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1408314330}
+  - component: {fileID: 1408314331}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1408314330
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408314329}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 34337037}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1408314331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408314329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a9e60bd26b04164c98d5818218095ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioSources: []
+  _gameMusic: {fileID: 1816752736}
 --- !u!1 &1521048915
 GameObject:
   m_ObjectHideFlags: 0
@@ -741,7 +788,7 @@ PrefabInstance:
     - target: {fileID: 8267605330728274584, guid: dc00ab513d951ae479459c8279a12176, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: fcb648e9f93dd7942b20e1a1d9a84e96, type: 3}
+      objectReference: {fileID: 8300000, guid: 72cdf159178b53c4d8b7f32876ecdf45, type: 3}
     - target: {fileID: 8267605330728274584, guid: dc00ab513d951ae479459c8279a12176, type: 3}
       propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
       value: 0

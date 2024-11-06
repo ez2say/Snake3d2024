@@ -155,13 +155,13 @@ public class SnakeController : MonoBehaviour
         {
             _obstacleDeathSound.Play();
 
-            Die();
+            Invoke("Die", 1f);
         }
         else if (other.CompareTag("Water"))
         {
             _toTheDepthSound.Play();
 
-            Die();
+            Invoke("Die", 1f);
         }
     }
 
