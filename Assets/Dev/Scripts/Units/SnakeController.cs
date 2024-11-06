@@ -36,6 +36,10 @@ public class SnakeController : MonoBehaviour
 
     private InputManager _inputManager;
 
+    private List<Vector3> _PositionHistory = new List<Vector3>();
+
+    private List<Quaternion> _RotationHistory = new List<Quaternion>();
+
     private bool _isDead;
 
     private void Start()
@@ -90,9 +94,8 @@ public class SnakeController : MonoBehaviour
 
     private void SavePreviousState()
     {
-        _previousPosition = transform.position;
-
-        _previousRotation = transform.rotation;
+        _PositionHistory.Insert(0, transform.position);
+        _RotationHistory.Insert(0, transform.rotation);
     }
 
     private void UpdatePosition(float speed)
@@ -107,28 +110,18 @@ public class SnakeController : MonoBehaviour
 
     private void MoveTail()
     {
-        float sqrDistance = Mathf.Sqrt(_bonesDistance);
-
-        Vector3 previousPosition = _previousPosition;
-        
-        Quaternion previousRotation = _previousRotation;
-
+        int index = 0;
         foreach (var bone in _tails)
         {
-            if ((bone.position - previousPosition).sqrMagnitude > sqrDistance)
-            {
-                Vector3 currentBonePosition = bone.position;
+            Vector3 point = _PositionHistory[Mathf.Min(index * (int)_bonesDistance, _PositionHistory.Count-1)];
 
-                bone.position = previousPosition;
+            Quaternion rotation = _RotationHistory[Mathf.Min(index * (int)_bonesDistance, _RotationHistory.Count - 1)];
 
-                bone.rotation = previousRotation;
+            bone.transform.position = point;
 
-                previousPosition = currentBonePosition;
-            }
-            else
-            {
-                break;
-            }
+            bone.transform.rotation = rotation;
+
+            index++;
         }
     }
 
@@ -184,9 +177,8 @@ public class SnakeController : MonoBehaviour
 
     private void AddNewSegment()
     {
-        GameObject bone = Instantiate(_bonePrefab, _previousPosition, Quaternion.identity);
-
-        bone.transform.rotation = _previousRotation;
+        Vector3 newSegmentPosition = transform.position - _direction * 25f;
+        GameObject bone = Instantiate(_bonePrefab, newSegmentPosition, Quaternion.identity);
 
         _tails.Add(bone.transform);
     }
@@ -280,6 +272,6 @@ public class SnakeController : MonoBehaviour
 
         _isDead = false;
 
-        Time.timeScale = 1f; //new
+        Time.timeScale = 1f;//new
     }
 }
