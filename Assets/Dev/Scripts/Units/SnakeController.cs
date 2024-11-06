@@ -36,12 +36,13 @@ public class SnakeController : MonoBehaviour
 
     private InputManager _inputManager;
 
+    private bool _isDead;
+
     private void Start()
     {
         Instance = this;
 
         _inputManager = new GameObject("InputManager").AddComponent<InputManager>();
-
 
         if (_recordPopupPanel != null)
         {
@@ -53,10 +54,14 @@ public class SnakeController : MonoBehaviour
         }
 
         SavePreviousState();
+
+        _isDead = false;
     }
 
     private void Update()
     {
+        if (_isDead) return;
+
         HandleInput();
 
         MoveHead(_moveSpeed);
@@ -141,6 +146,8 @@ public class SnakeController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (_isDead) return;
+
         if (other.CompareTag("Food"))
         {
             _chompSound.Play();
@@ -153,16 +160,26 @@ public class SnakeController : MonoBehaviour
         }
         else if (other.CompareTag("Obstacle") || other.CompareTag("Water"))
         {
-            _obstacleDeathSound.Play();
+            if (other.CompareTag("Obstacle"))
+            {
+                _obstacleDeathSound.Play();
+            }
+            else if (other.CompareTag("Water"))
+            {
+                _toTheDepthSound.Play();
+            }
+
+            StopMovement();
 
             Invoke("Die", 1f);
         }
-        else if (other.CompareTag("Water"))
-        {
-            _toTheDepthSound.Play();
+    }
 
-            Invoke("Die", 1f);
-        }
+    private void StopMovement()
+    {
+        _isDead = true;
+
+        _direction = Vector3.zero;
     }
 
     private void AddNewSegment()
@@ -197,6 +214,7 @@ public class SnakeController : MonoBehaviour
 
     private void Die()
     {
+        _isDead = true;
         Debug.Log("Змейка умерла!");
         if (DeathScreenManager.Instance != null)
         {
@@ -259,5 +277,9 @@ public class SnakeController : MonoBehaviour
         _tails.Clear();
 
         SavePreviousState();
+
+        _isDead = false;
+
+        Time.timeScale = 1f;
     }
 }
