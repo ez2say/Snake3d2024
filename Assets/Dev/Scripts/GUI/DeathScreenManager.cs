@@ -52,6 +52,12 @@ public class DeathScreenManager : MonoBehaviour
         ShowLeaderboard();
 
         ShowNicknameInput();
+
+        // Сохраняем текущую позицию аудиодорожки
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.SaveGameMusicTime();
+        }
     }
 
     private void UpdateFoodEatenCount(int foodEaten)
