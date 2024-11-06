@@ -20,6 +20,7 @@ public class DeathScreenManager : MonoBehaviour
 
     [SerializeField] private GameObject _nicknameInputPanel;
 
+    [SerializeField] private GameObject _pauseButton;
     [Header("Game Data")]
 
     private int _foodEatenCount;
@@ -37,6 +38,8 @@ public class DeathScreenManager : MonoBehaviour
         Instance = this;
 
         _nicknameInputPanel.SetActive(true);
+
+        _pauseButton.SetActive(true);
     }
 
     public void ShowDeathScreen(int foodEaten)
@@ -53,11 +56,10 @@ public class DeathScreenManager : MonoBehaviour
 
         ShowNicknameInput();
 
-        // Сохраняем текущую позицию аудиодорожки
-        if (AudioManager.Instance != null)
-        {
-            AudioManager.Instance.SaveGameMusicTime();
-        }
+        AudioManager.Instance.SaveGameMusicTime();
+
+        _pauseButton.SetActive(false);
+
     }
 
     private void UpdateFoodEatenCount(int foodEaten)
@@ -187,6 +189,10 @@ public class DeathScreenManager : MonoBehaviour
         UnPauseGame();
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+
+        _pauseButton.SetActive(true);
+
     }
 
     public void ResetLeaderboard()
