@@ -280,6 +280,6 @@ public class SnakeController : MonoBehaviour
 
         _isDead = false;
 
-        Time.timeScale = 1f;
+        Time.timeScale = 1f; //new
     }
 }
