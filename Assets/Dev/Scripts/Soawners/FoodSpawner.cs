@@ -5,25 +5,18 @@ using System.Collections;
 public class FoodSpawner : MonoBehaviour
 {
     [Header("Food Settings")]
-
     [SerializeField] private List<GameObject> _foodPrefabs;
-
     [SerializeField] private int _foodCount;
-
     [SerializeField] private float _spawnInterval;
-
     [SerializeField] private float _minDistanceBetweenFood;
 
     [Header("Spawn Areas")]
-
     [SerializeField] private List<BoxCollider> _spawnAreas;
 
     [Header("Ground Settings")]
-
     [SerializeField] private float _groundHeight;
 
     private List<Vector3> _spawnedFoodPositions = new List<Vector3>();
-
     private int _currentFoodCount;
 
     public void Construct()
@@ -40,26 +33,16 @@ public class FoodSpawner : MonoBehaviour
     {
         while (_currentFoodCount < _foodCount)
         {
-            Vector3 spawnPosition = GetRandomPositionInArea();
+            BoxCollider spawnArea = GetRandomSpawnArea();
+            Vector3 spawnPosition = GetRandomPositionInArea(spawnArea);
 
             if (IsPositionValid(spawnPosition))
             {
-                InstantiateFood(spawnPosition);
+                InstantiateFood(spawnPosition, spawnArea);
             }
 
             yield return null;
         }
-    }
-
-    private Vector3 GetRandomPositionInArea()
-    {
-        BoxCollider randomSpawnArea = GetRandomSpawnArea();
-
-        Vector3 randomPosition = GetRandomPositionInBounds(randomSpawnArea);
-
-        randomPosition.y = GetGroundHeight(randomPosition);
-
-        return randomPosition;
     }
 
     private BoxCollider GetRandomSpawnArea()
@@ -67,11 +50,20 @@ public class FoodSpawner : MonoBehaviour
         return _spawnAreas[Random.Range(0, _spawnAreas.Count)];
     }
 
+    private Vector3 GetRandomPositionInArea(BoxCollider spawnArea)
+    {
+        Vector3 randomPosition = GetRandomPositionInBounds(spawnArea);
+
+        randomPosition.y = GetGroundHeight(randomPosition);
+
+        return randomPosition;
+    }
+
     private Vector3 GetRandomPositionInBounds(BoxCollider spawnArea)
     {
         return new Vector3(
             Random.Range(spawnArea.bounds.min.x, spawnArea.bounds.max.x),
-            1000f,
+            12f,
             Random.Range(spawnArea.bounds.min.z, spawnArea.bounds.max.z)
         );
     }
@@ -121,7 +113,7 @@ public class FoodSpawner : MonoBehaviour
         return true;
     }
 
-    private void InstantiateFood(Vector3 spawnPosition)
+    private void InstantiateFood(Vector3 spawnPosition, BoxCollider spawnArea)
     {
         int randomIndex = GetRandomFoodIndex();
 
@@ -130,6 +122,8 @@ public class FoodSpawner : MonoBehaviour
         AddFoodPosition(spawnPosition);
 
         SubscribeToFoodEatenEvent(food);
+
+        food.transform.SetParent(spawnArea.transform);
     }
 
     private int GetRandomFoodIndex()

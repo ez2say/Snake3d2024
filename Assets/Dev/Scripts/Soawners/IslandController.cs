@@ -26,7 +26,6 @@ public class IslandController : MonoBehaviour
     private void Awake()
     {
         InitializeOriginalPositions();
-
         InitializeSurfaceAnimators();
     }
 
@@ -63,12 +62,9 @@ public class IslandController : MonoBehaviour
         while (true)
         {
             int surfacesToSinkCount = Random.Range(_minIslandsToSink, _maxIslandsToSink + 1);
-
             List<Transform> surfacesToSink = new List<Transform>(_surfaces);
 
-
             Transform beeSpawnPoint = _beeSpawner.GetCurrentSpawnPoint();
-
             surfacesToSink.Remove(beeSpawnPoint);
 
             for (int i = 0; i < surfacesToSinkCount; i++)
@@ -76,9 +72,7 @@ public class IslandController : MonoBehaviour
                 if (surfacesToSink.Count == 0) break;
 
                 int randomIndex = Random.Range(0, surfacesToSink.Count);
-
                 Transform surface = surfacesToSink[randomIndex];
-
                 surfacesToSink.RemoveAt(randomIndex);
 
                 StartCoroutine(SinkSurface(surface));
@@ -91,11 +85,8 @@ public class IslandController : MonoBehaviour
     private IEnumerator SinkSurface(Transform surface)
     {
         yield return StartCoroutine(PlayShakeAnimation(surface));
-
         yield return StartCoroutine(MoveSurface(surface, _sinkDepth, _sinkTime));
-
         yield return new WaitForSeconds(Random.Range(1f, 3f));
-
         yield return StartCoroutine(MoveSurface(surface, _originalPositions[surface].y, _riseTime));
     }
 
@@ -104,13 +95,9 @@ public class IslandController : MonoBehaviour
         if (_surfaceAnimators.ContainsKey(surface))
         {
             Animator animator = _surfaceAnimators[surface];
-
             animator.enabled = true;
-
             animator.Play("Shake");
-
             yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-
             animator.enabled = false;
         }
     }
@@ -118,9 +105,7 @@ public class IslandController : MonoBehaviour
     private IEnumerator MoveSurface(Transform surface, float targetY, float time)
     {
         Vector3 startPosition = surface.position;
-
         Vector3 targetPosition = new Vector3(startPosition.x, targetY, startPosition.z);
-
         float elapsedTime = 0f;
 
         while (elapsedTime < time)

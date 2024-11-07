@@ -4,23 +4,15 @@ using System.Collections;
 
 public class ObstacleSpawner : MonoBehaviour
 {
-
     [Header("Spawn Settings")]
-
     [SerializeField] private GameObject _snake;
-
     [SerializeField] private List<GameObject> _obstaclePrefabs;
-
     [SerializeField] private List<BoxCollider> _spawnAreas;
-
     [SerializeField] private int _obstacleCount;
-
     [SerializeField] private float _minDistanceBetweenObstacles;
-
     [SerializeField] private float _minDistanceFromSnake;
 
     [Header("Ground Settings")]
-
     [SerializeField] private float _groundHeight;
 
     private List<Vector3> _spawnedObstaclePositions = new List<Vector3>();
@@ -39,12 +31,11 @@ public class ObstacleSpawner : MonoBehaviour
         for (int i = 0; i < _obstacleCount; i++)
         {
             BoxCollider spawnArea = GetRandomSpawnArea();
-
             Vector3 spawnPosition = GetRandomPositionInArea(spawnArea);
 
             if (IsPositionValid(spawnPosition))
             {
-                InstantiateObstacle(spawnPosition);
+                InstantiateObstacle(spawnPosition, spawnArea);
             }
 
             yield return null;
@@ -62,7 +53,7 @@ public class ObstacleSpawner : MonoBehaviour
 
         Vector3 point = new Vector3(
             Random.Range(-extents.x, extents.x),
-            1000f,
+            12f,
             Random.Range(-extents.z, extents.z)
         );
 
@@ -115,13 +106,15 @@ public class ObstacleSpawner : MonoBehaviour
         return true;
     }
 
-    private void InstantiateObstacle(Vector3 spawnPosition)
+    private void InstantiateObstacle(Vector3 spawnPosition, BoxCollider spawnArea)
     {
         int randomIndex = GetRandomObstacleIndex();
 
         GameObject obstacle = CreateObstacleObject(randomIndex, spawnPosition);
 
         AddObstaclePosition(spawnPosition);
+
+        obstacle.transform.SetParent(spawnArea.transform);
     }
 
     private int GetRandomObstacleIndex()
