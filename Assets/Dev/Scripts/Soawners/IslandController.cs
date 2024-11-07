@@ -6,23 +6,21 @@ public class IslandController : MonoBehaviour
 {
     [Header("Island Settings")]
     [SerializeField] private float _sinkDepth = -5f;
-
     [SerializeField] private float _riseTime = 2f;
-
     [SerializeField] private float _sinkTime = 2f;
-    
+
     [Header("Randomization Settings")]
     [SerializeField] private int _minIslandsToSink = 1;
-
     [SerializeField] private int _maxIslandsToSink = 3;
-
     [SerializeField] private float _intervalBetweenSinks = 5f;
 
     [Header("Surfaces")]
     [SerializeField] private Transform[] _surfaces;
 
-    private Dictionary<Transform, Vector3> _originalPositions;
+    [Header("Bee Spawner")]
+    [SerializeField] private BeeSpawner _beeSpawner;
 
+    private Dictionary<Transform, Vector3> _originalPositions;
     private Dictionary<Transform, Animator> _surfaceAnimators;
 
     private void Awake()
@@ -55,7 +53,6 @@ public class IslandController : MonoBehaviour
             if (animator != null)
             {
                 _surfaceAnimators[surface] = animator;
-
                 animator.enabled = false;
             }
         }
@@ -69,6 +66,11 @@ public class IslandController : MonoBehaviour
 
             List<Transform> surfacesToSink = new List<Transform>(_surfaces);
 
+
+            Transform beeSpawnPoint = _beeSpawner.GetCurrentSpawnPoint();
+
+            surfacesToSink.Remove(beeSpawnPoint);
+
             for (int i = 0; i < surfacesToSinkCount; i++)
             {
                 if (surfacesToSink.Count == 0) break;
@@ -76,7 +78,7 @@ public class IslandController : MonoBehaviour
                 int randomIndex = Random.Range(0, surfacesToSink.Count);
 
                 Transform surface = surfacesToSink[randomIndex];
-                
+
                 surfacesToSink.RemoveAt(randomIndex);
 
                 StartCoroutine(SinkSurface(surface));
@@ -124,9 +126,7 @@ public class IslandController : MonoBehaviour
         while (elapsedTime < time)
         {
             surface.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / time);
-
             elapsedTime += Time.deltaTime;
-
             yield return null;
         }
 

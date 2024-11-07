@@ -6,7 +6,10 @@ public class BeeSpawner : MonoBehaviour
 {
     [Header("Spawn Settings")]
     [SerializeField] private GameObject _beePrefab; 
+    
     [SerializeField] private Transform[] _spawnPoints; 
+
+    private Transform _currentSpawnPoint;
 
     private void Start()
     {
@@ -29,6 +32,8 @@ public class BeeSpawner : MonoBehaviour
         _beePrefab.transform.position = spawnPoint.position;
 
         _beePrefab.transform.rotation = spawnPoint.rotation;
+
+        _currentSpawnPoint = spawnPoint;
     }
 
     private bool IsPositionOccupied(Vector3 position)
@@ -44,5 +49,10 @@ public class BeeSpawner : MonoBehaviour
         }
 
         return false;
+    }
+
+    public Transform GetCurrentSpawnPoint()
+    {
+        return _currentSpawnPoint;
     }
 }
