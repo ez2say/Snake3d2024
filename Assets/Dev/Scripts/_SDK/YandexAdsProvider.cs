@@ -18,6 +18,8 @@ namespace Root.SDK
 
         public event Action OnShowRewardVideo;
 
+        public event Action OnRewardedVideo;
+
         public event Action OnCloseRewardVideo;
 
         public event Action OnErrorCloseRewardVideo;
@@ -64,6 +66,11 @@ namespace Root.SDK
         public void OnCloseRewardedVideoExternal()
         {
             OnCloseRewardVideo?.Invoke();
+        }
+
+        public void OnRewardedVideoExternal()
+        {
+
         }
 
         public void OnErrorCloseRewardedVideoExternal()

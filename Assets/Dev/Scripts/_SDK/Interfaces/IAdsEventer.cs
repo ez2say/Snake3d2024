@@ -12,6 +12,8 @@ namespace Root.SDK
 
         event Action OnCloseRewardVideo;
 
+        event Action OnRewardedVideo;
+
         event Action OnErrorCloseRewardVideo;
     }
 }
