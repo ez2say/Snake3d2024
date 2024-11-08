@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace Root.SDK
 {
-
     public class YandexAdsProvider : MonoBehaviour, IAdsProvider, IAdsEventer
     {
         public IAdsProvider AdsCallable => _instance;
@@ -33,7 +32,7 @@ namespace Root.SDK
                 return;
 
 
-#if UNITY_EDITOR
+#if UNITY_EDITOR || UNITY_ANDROID
             _currentStrategy = new UnityYandexAdsStrategy(this);
 #elif UNITY_WEBGL
             _currentStrategy = new WebGLYandexAdsStrategy();
