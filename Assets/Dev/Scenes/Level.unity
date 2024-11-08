@@ -6225,7 +6225,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 709759272}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 86b1b09e2eb60f44cb0e5f8844446492, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6307,6 +6307,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2095113533}
   m_SourcePrefab: {fileID: 100100000, guid: 86b1b09e2eb60f44cb0e5f8844446492, type: 3}
+--- !u!4 &391825775 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 86b1b09e2eb60f44cb0e5f8844446492, type: 3}
+  m_PrefabInstance: {fileID: 391825774}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &404259461 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 86b1b09e2eb60f44cb0e5f8844446492, type: 3}
@@ -12113,6 +12118,10 @@ Transform:
   - {fileID: 1714732756}
   - {fileID: 637647717}
   - {fileID: 1563651324}
+  - {fileID: 1615748391}
+  - {fileID: 924530524}
+  - {fileID: 391825775}
+  - {fileID: 1406041697}
   m_Father: {fileID: 775434559}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &713353625
@@ -16422,7 +16431,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 709759272}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 86b1b09e2eb60f44cb0e5f8844446492, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16504,6 +16513,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1796566020}
   m_SourcePrefab: {fileID: 100100000, guid: 86b1b09e2eb60f44cb0e5f8844446492, type: 3}
+--- !u!4 &924530524 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 86b1b09e2eb60f44cb0e5f8844446492, type: 3}
+  m_PrefabInstance: {fileID: 924530523}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &925580010 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f17988e5c7436a44f9c9cb8d25bbd840, type: 3}
@@ -24770,7 +24784,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 709759272}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 86b1b09e2eb60f44cb0e5f8844446492, type: 3}
       propertyPath: m_LocalPosition.x
@@ -24852,6 +24866,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 412935725}
   m_SourcePrefab: {fileID: 100100000, guid: 86b1b09e2eb60f44cb0e5f8844446492, type: 3}
+--- !u!4 &1406041697 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 86b1b09e2eb60f44cb0e5f8844446492, type: 3}
+  m_PrefabInstance: {fileID: 1406041696}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1411238407 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7627880868419135160, guid: efeaddaa9a64e8148a91ac1547ca9e79, type: 3}
@@ -28355,7 +28374,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 709759272}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 86b1b09e2eb60f44cb0e5f8844446492, type: 3}
       propertyPath: m_LocalPosition.x
@@ -28437,6 +28456,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 585192206}
   m_SourcePrefab: {fileID: 100100000, guid: 86b1b09e2eb60f44cb0e5f8844446492, type: 3}
+--- !u!4 &1615748391 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 86b1b09e2eb60f44cb0e5f8844446492, type: 3}
+  m_PrefabInstance: {fileID: 1615748390}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1616467949 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 86b1b09e2eb60f44cb0e5f8844446492, type: 3}
@@ -37336,7 +37360,3 @@ SceneRoots:
   - {fileID: 198621573}
   - {fileID: 1562847966}
   - {fileID: 687630036}
-  - {fileID: 1615748390}
-  - {fileID: 924530523}
-  - {fileID: 391825774}
-  - {fileID: 1406041696}
