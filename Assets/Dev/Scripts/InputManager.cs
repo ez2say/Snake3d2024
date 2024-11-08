@@ -22,13 +22,16 @@ public class InputManager : MonoBehaviour
 
     private Vector3 HandleKeyboardInput()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             return Vector3.forward;
-        else if (Input.GetKeyDown(KeyCode.A))
+
+        else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             return Vector3.left;
-        else if (Input.GetKeyDown(KeyCode.S))
+
+        else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
             return Vector3.back;
-        else if (Input.GetKeyDown(KeyCode.D))
+
+        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             return Vector3.right;
 
         return Vector3.zero;
