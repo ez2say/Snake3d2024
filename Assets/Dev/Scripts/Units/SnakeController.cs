@@ -133,6 +133,7 @@ public class SnakeController : MonoBehaviour
 
         if (Physics.Raycast(rayStartPosition, _direction, out hit, _bonesDistance) && hit.collider.CompareTag("Segment"))
         {
+            Debug.Log("Врезался в сегмент");
             Die();
         }
     }
@@ -165,6 +166,17 @@ public class SnakeController : MonoBehaviour
             StopMovement();
 
             Invoke("Die", 1f);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (_isDead) return;
+
+        if (collision.gameObject.CompareTag("Segment"))
+        {
+            Debug.Log("Врезался в сегмент");
+            Die();
         }
     }
 

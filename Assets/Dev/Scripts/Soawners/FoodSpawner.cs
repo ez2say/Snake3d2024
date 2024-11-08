@@ -18,10 +18,20 @@ public class FoodSpawner : MonoBehaviour
 
     private List<Vector3> _spawnedFoodPositions = new List<Vector3>();
     private int _currentFoodCount;
+    private Dictionary<BoxCollider, Vector3> _previousPositions = new Dictionary<BoxCollider, Vector3>();
 
     public void Construct()
     {
         _currentFoodCount = 0;
+        InitializePreviousPositions();
+    }
+
+    private void InitializePreviousPositions()
+    {
+        foreach (BoxCollider spawnArea in _spawnAreas)
+        {
+            _previousPositions[spawnArea] = spawnArea.transform.position;
+        }
     }
 
     public void StartSpawn()
@@ -36,7 +46,7 @@ public class FoodSpawner : MonoBehaviour
             BoxCollider spawnArea = GetRandomSpawnArea();
             Vector3 spawnPosition = GetRandomPositionInArea(spawnArea);
 
-            if (IsPositionValid(spawnPosition))
+            if (IsPositionValid(spawnPosition) && !IsSpawnAreaMoving(spawnArea))
             {
                 InstantiateFood(spawnPosition, spawnArea);
             }
@@ -63,7 +73,7 @@ public class FoodSpawner : MonoBehaviour
     {
         return new Vector3(
             Random.Range(spawnArea.bounds.min.x, spawnArea.bounds.max.x),
-            12f,
+            0.5f,
             Random.Range(spawnArea.bounds.min.z, spawnArea.bounds.max.z)
         );
     }
@@ -111,6 +121,19 @@ public class FoodSpawner : MonoBehaviour
         }
 
         return true;
+    }
+
+    private bool IsSpawnAreaMoving(BoxCollider spawnArea)
+    {
+        Vector3 currentPosition = spawnArea.transform.position;
+        Vector3 previousPosition = _previousPositions[spawnArea];
+
+        bool isMoving = currentPosition != previousPosition;
+
+        // Обновляем предыдущую позицию
+        _previousPositions[spawnArea] = currentPosition;
+
+        return isMoving;
     }
 
     private void InstantiateFood(Vector3 spawnPosition, BoxCollider spawnArea)
