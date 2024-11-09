@@ -3,27 +3,22 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] private GameObject settingsPanel;
+    [SerializeField] private AudioButton _audioButton;
+
     private bool isActive = false;
 
-    void Start()
+    private void Start()
     {
-        settingsPanel.SetActive(false);
+        _audioButton?.UpdateStatus(isActive);
     }
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Level"); 
+        SceneManager.LoadScene("Level");
     }
 
     public void ToggleActive()
     {
-        isActive = !isActive;
-        settingsPanel.SetActive(isActive);
-    }
-
-    public void OpenSettings()
-    {
-        ToggleActive();
+        _audioButton?.ChangeState();
     }
 }
