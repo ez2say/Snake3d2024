@@ -12,14 +12,26 @@ public class HUDManager : MonoBehaviour
     [Header("Game Data")]
 
     private int _foodEatenCount;
+    
+    [SerializeField] private GameObject _view;
 
-    private void Start()
+    public void Construct()
     {
         Instance = this;
         
         InitializeFoodEatenCount();
         
         UpdateFoodCounterText();
+    }
+
+    public void Open()
+    {
+        _view.SetActive(true);
+    }
+
+    public void Close()
+    {
+        _view.SetActive(false);
     }
 
     private void InitializeFoodEatenCount()

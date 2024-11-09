@@ -23,13 +23,13 @@ public class IslandController : MonoBehaviour
     private Dictionary<Transform, Vector3> _originalPositions;
     private Dictionary<Transform, Animator> _surfaceAnimators;
 
-    private void Awake()
+    public void Construct()
     {
         InitializeOriginalPositions();
         InitializeSurfaceAnimators();
     }
 
-    private void Start()
+    public void StartEarthquake()
     {
         StartCoroutine(SinkAndRiseRoutine());
     }

@@ -26,7 +26,7 @@ namespace Root.SDK
 
         private IYandexAdsStrategy _currentStrategy;
 
-        public void Start()
+        public void Construct()
         {
             if (_instance == null)
                 _instance = this;

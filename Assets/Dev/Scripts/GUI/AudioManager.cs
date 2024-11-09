@@ -13,16 +13,12 @@ public class AudioManager : MonoBehaviour
 
     private float _gameMusicTime;
 
-    private void Awake()
+    public void Construct()
     {
         if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
         }
     }
 

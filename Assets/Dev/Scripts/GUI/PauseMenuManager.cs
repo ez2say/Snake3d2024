@@ -5,9 +5,16 @@ public class PauseMenuManager : MonoBehaviour
 {
     public GameObject pauseMenuPanel;
 
+    [SerializeField] GameObject _view;
+
     [SerializeField] private GameObject _settingsPanel;
     
     private bool isPaused = false;
+
+    public void Construct()
+    {
+
+    }
 
     private void Update()
     {
@@ -22,6 +29,16 @@ public class PauseMenuManager : MonoBehaviour
                 PauseGame();
             }
         }
+    }
+
+    public void Open()
+    {
+        _view?.SetActive(true);
+    }
+
+    public void Close()
+    {
+        _view?.SetActive(false);
     }
 
     public void PauseGame()

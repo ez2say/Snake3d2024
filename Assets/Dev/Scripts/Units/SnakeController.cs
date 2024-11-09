@@ -42,11 +42,11 @@ public class SnakeController : MonoBehaviour
 
     private bool _isDead;
 
-    private void Start()
+    public void Construct(InputManager inputManager)
     {
         Instance = this;
 
-        _inputManager = new GameObject("InputManager").AddComponent<InputManager>();
+        _inputManager = inputManager;
 
         if (_recordPopupPanel != null)
         {
@@ -65,6 +65,8 @@ public class SnakeController : MonoBehaviour
     private void Update()
     {
         if (_isDead) return;
+
+        if (!_inputManager.IsActiveControl) return;
 
         HandleInput();
 

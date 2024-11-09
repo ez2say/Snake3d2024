@@ -8,6 +8,8 @@ public class InputManager : MonoBehaviour
 
     private bool _isSwiping = false;
 
+    public bool IsActiveControl { get; set; }
+
     public Vector3 GetInputDirection()
     {
         Vector3 direction = HandleKeyboardInput();

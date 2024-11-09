@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,13 +15,18 @@ public class GameBootstraper : MonoBehaviour
         {
             IsLoad = true;
             return;
-        }
-
-        if (indexScene == (int)IDScene.GAMEPLAY && !IsLoad)
+        } 
+        else if (indexScene == (int)IDScene.GAMEPLAY && !IsLoad)
         {
             SceneManager.LoadScene((int)IDScene.INIT);
 
             IsLoad = true;
+
+            return;
+        }
+        else if (indexScene == (int)IDScene.INIT && IsLoad)
+        {
+            SceneManager.LoadScene((int)IDScene.GAMEPLAY);
 
             return;
         }

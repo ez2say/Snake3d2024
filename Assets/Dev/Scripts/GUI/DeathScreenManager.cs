@@ -23,12 +23,24 @@ public class DeathScreenManager : MonoBehaviour
     [Header("Snake Controller")]
 
     [SerializeField] private SnakeController _snakeController;
+    
+    [SerializeField] private GameObject _view;
 
-    private void Start()
+    public void Construct()
     {
         Instance = this;
 
         _pauseButton.SetActive(true);
+    }
+
+    public void Open()
+    {
+        _view.SetActive(true);
+    }
+
+    public void Close()
+    {
+        _view.SetActive(false);
     }
 
     public void ShowDeathScreen(int foodEaten)

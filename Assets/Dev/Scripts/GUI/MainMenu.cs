@@ -1,29 +1,35 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] private GameObject settingsPanel;
+    [SerializeField] private AudioButton _audioButton;
+
+    [SerializeField] private GameObject _view;
+
+    private AudioManager _audioManager;
+
     private bool isActive = false;
 
-    void Start()
+    public void Construct()
     {
-        settingsPanel.SetActive(false);
+        _audioManager = AudioManager.Instance;
+
+        _audioButton?.UpdateStatus(isActive);
+    }
+    public void Open()
+    {
+        _view?.SetActive(true);
     }
 
-    public void StartGame()
+    public void Close()
     {
-        SceneManager.LoadScene("Level"); 
+        _view?.SetActive(false);
     }
 
     public void ToggleActive()
     {
-        isActive = !isActive;
-        settingsPanel.SetActive(isActive);
-    }
+        _audioButton?.ChangeState();
 
-    public void OpenSettings()
-    {
-        ToggleActive();
+        _audioManager.SetVolume(_audioButton.IsActive);
     }
 }

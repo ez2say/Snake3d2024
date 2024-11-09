@@ -44,21 +44,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1059a21b6c30bc24d811acc1ca22ffde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _snake: {fileID: 1661213606141089588, guid: 96130f0b16203d243b31e84456574634, type: 3}
+  _snake: {fileID: 0}
   _obstaclePrefabs:
   - {fileID: 6357496146351456699, guid: df356eac08d02344a80ab286a65e487b, type: 3}
-  - {fileID: 4229414954218332122, guid: 73b3e168661347c4198df3b6e37722d6, type: 3}
   _spawnAreas:
-  - {fileID: 6783587836182881547, guid: 30c97906b53dbad4b86403dda5d53fe3, type: 3}
-  - {fileID: 8651193440810037021, guid: 2e030e6cc6fbc994a9688b220c2fff24, type: 3}
-  - {fileID: 5388656811843884269, guid: 942feedab728493439b8eaf9129ae782, type: 3}
-  - {fileID: 4838432875779975731, guid: 0ab55696aed4c924883be0d770bc4c68, type: 3}
-  - {fileID: 3073970049965069386, guid: 708dd5af2d4b91044a90a1895df9553d, type: 3}
-  - {fileID: 2121029779150700411, guid: 627a9fe8c9a6a184e866046184c99c08, type: 3}
-  - {fileID: 2971299328242883773, guid: cf8d4e0348efd9248b8465c8d6cc6d67, type: 3}
-  - {fileID: 116581989792812617, guid: edd2476ca33bd6947908147a432be377, type: 3}
-  - {fileID: 6809936893193815702, guid: bdf58ddcb83a2864aa33497ccfc2cede, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _obstacleCount: 50
-  _minDistanceBetweenObstacles: 4
-  _minDistanceFromSnake: 0
+  _minDistanceBetweenObstacles: 2
+  _minDistanceFromSnake: 3
   _groundHeight: 12

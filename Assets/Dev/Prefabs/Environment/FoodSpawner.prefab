@@ -25,13 +25,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4009450121977106893}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7103054, z: -0, w: 0.70389366}
+  m_LocalRotation: {x: 0, y: 0.7103082, z: 0, w: 0.70389086}
   m_LocalPosition: {x: 1.2973312, y: 1.1237946, z: 1.272906}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90.52, z: 0}
 --- !u!114 &5990167548721439733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46,17 +46,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _foodPrefabs:
   - {fileID: 5905814178400069565, guid: 9b5278b9be0f1d44daecb898bc525517, type: 3}
-  _foodCount: 10
-  _spawnInterval: 3
-  _minDistanceBetweenFood: 4
+  _foodCount: 30
+  _spawnInterval: 2
+  _minDistanceBetweenFood: 2
   _spawnAreas:
-  - {fileID: 8625801237346820479, guid: 9ffd5c24982e38a408e3713d8977c061, type: 3}
-  - {fileID: 3231362641009521108, guid: e65075af84bffe944a6f47f9a9f492cd, type: 3}
-  - {fileID: 6348533896061239627, guid: 641bc9e33fddfe347a3c96fd015fd57f, type: 3}
-  - {fileID: 8628128621103448030, guid: ad141ab4e0e88974990177f8359a97f2, type: 3}
-  - {fileID: 7828623276650718844, guid: 34a5acc893a9e554fa73642c10a2313e, type: 3}
-  - {fileID: 6830013087871467180, guid: 2c4bbee49eabda94f911b6fc4338a87b, type: 3}
-  - {fileID: 5517194717344955833, guid: 5ae0ff4671d213b4f853e262e1034f44, type: 3}
-  - {fileID: 1035617351946980926, guid: 17ac384b77163b7498959028011dd9bf, type: 3}
-  - {fileID: 8483673939448491498, guid: 7c9c218483e7453429504b70b88b95c9, type: 3}
-  _groundHeight: 12.7
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _groundHeight: 12.5
