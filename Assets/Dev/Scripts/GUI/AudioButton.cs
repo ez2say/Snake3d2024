@@ -37,11 +37,13 @@ public class AudioButton : MonoBehaviour
         if (value)
         {
             _render.sprite = _turnOn;
+
             Debug.Log("Is Active: " + IsActive);
         }
         else
         {
             Debug.Log("Not is Active: " + IsActive);
+
             _render.sprite = _turnOff;
         }
     }
