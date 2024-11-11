@@ -1,4 +1,5 @@
 using Root.GUI;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -17,11 +18,24 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private IslandController _islandController;
 
+    [DllImport("__Internal")]
+    private static extern void GameReadyExtern();
+
     private void Awake()
     {
         InitComponentSystem();
 
         PreWork();
+
+#if UNITY_WEBGL
+        InitYandexAnalytics();
+#endif
+
+    }
+
+    private static void InitYandexAnalytics()
+    {
+        GameReadyExtern();
     }
 
     private void InitComponentSystem()
