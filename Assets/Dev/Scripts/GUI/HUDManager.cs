@@ -52,7 +52,7 @@ public class HUDManager : MonoBehaviour
     {
         if (_foodCounter != null)
         {
-            _foodCounter.text = "Food Eaten: " + _foodEatenCount;
+            _foodCounter.text = _foodEatenCount.ToString();
         }
         else
         {

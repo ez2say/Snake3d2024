@@ -10,11 +10,19 @@ namespace Root.Core
 
         [SerializeField] private YandexAdsProvider _yandexAdsProvider;
 
+        public static bool IsLoad = false;
+
         public void Start()
         {
+            if (IsLoad) return;
+
             _audioManager.Construct();
 
             _yandexAdsProvider.Construct();
+
+            DontDestroyOnLoad(gameObject);
+
+            IsLoad = true;  
 
             SceneManager.LoadScene((int)IDScene.GAMEPLAY);
         }

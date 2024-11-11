@@ -1,13 +1,15 @@
 using UnityEngine;
-using System.Collections.Generic;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance { get; private set; }
 
+    public bool IsOn { get; private set; }
+
     [Header("Audio Sources")]
 
-    [SerializeField] private List<AudioSource> _audioSources;
+    [SerializeField] private AudioMixer _mixer;
 
     [SerializeField] private AudioSource _gameMusic;
 
@@ -18,8 +20,11 @@ public class AudioManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+
             DontDestroyOnLoad(gameObject);
         }
+
+        SetVolume(true);
     }
 
     private void OnEnable()
@@ -42,15 +47,13 @@ public class AudioManager : MonoBehaviour
 
     public void SetVolume(bool isOn)
     {
-        float volume = isOn ? 1f : 0f;
-        foreach (var audioSource in _audioSources)
-        {
-            audioSource.volume = volume;
-        }
-        if (_gameMusic != null)
-        {
-            _gameMusic.volume = volume;
-        }
+        float volume = isOn ? 0 : -80f;
+
+        Debug.Log("Aduio Valume: " + volume);
+
+        _mixer.SetFloat("Volume", volume);
+
+        IsOn = isOn;
     }
 
     public void SaveGameMusicTime()

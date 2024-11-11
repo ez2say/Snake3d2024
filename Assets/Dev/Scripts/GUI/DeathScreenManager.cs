@@ -95,14 +95,14 @@ public class DeathScreenManager : MonoBehaviour
     {
         UnPauseGame();
 
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene((int) IDScene.GAMEPLAY);
     }
 
     public void RestartGame()
     {
         UnPauseGame();
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene((int) IDScene.GAMEPLAY);
 
         _pauseButton.SetActive(true);
     }

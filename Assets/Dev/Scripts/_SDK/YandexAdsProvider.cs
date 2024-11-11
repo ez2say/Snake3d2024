@@ -29,9 +29,12 @@ namespace Root.SDK
         public void Construct()
         {
             if (_instance == null)
+            {
                 _instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
             else
-                return;
+            { return; }
 
 
 #if UNITY_EDITOR || UNITY_ANDROID
